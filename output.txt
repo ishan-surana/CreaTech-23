@@ -1,0 +1,96 @@
+Epoch 1/5
+10/10 [==============================] - 1s 48ms/step - loss: 0.7747 - accuracy: 0.7093 - val_loss: 0.6362 - val_accuracy: 0.7945
+Epoch 2/5
+10/10 [==============================] - 0s 27ms/step - loss: 0.6405 - accuracy: 0.7820 - val_loss: 0.6817 - val_accuracy: 0.7945
+Epoch 3/5
+10/10 [==============================] - 0s 31ms/step - loss: 0.5630 - accuracy: 0.7820 - val_loss: 0.6615 - val_accuracy: 0.7945
+Epoch 4/5
+10/10 [==============================] - 0s 28ms/step - loss: 0.5369 - accuracy: 0.8097 - val_loss: 0.7078 - val_accuracy: 0.8082
+Epoch 5/5
+10/10 [==============================] - 0s 33ms/step - loss: 0.5069 - accuracy: 0.8270 - val_loss: 0.6335 - val_accuracy: 0.8082
+3/3 [==============================] - 0s 8ms/step - loss: 0.6335 - accuracy: 0.8082
+Test Loss: 0.6334694623947144, Test Accuracy: 0.8082191944122314
+
+Enter a post text (type 'exit' to quit): bjp
+Enter the number of upvotes (normalized): 45
+1/1 [==============================] - 0s 115ms/step
+
+Sentiment Probabilities:
+Negative: 0.43
+Neutral: 0.00
+Positive: 0.57
+
+Enter a post text (type 'exit' to quit): engineering
+Enter the number of upvotes (normalized): 1234
+1/1 [==============================] - 0s 14ms/step
+
+Sentiment Probabilities:
+Negative: 1.00
+Neutral: 0.00
+Positive: 0.00
+
+Enter a post text (type 'exit' to quit): student
+Enter the number of upvotes (normalized): 121
+1/1 [==============================] - 0s 18ms/step
+
+Sentiment Probabilities:
+Negative: 0.61
+Neutral: 0.00
+Positive: 0.39
+
+Enter a post text (type 'exit' to quit): jobs
+Enter the number of upvotes (normalized): 12 
+1/1 [==============================] - 0s 30ms/step
+
+Sentiment Probabilities:
+Negative: 0.34
+Neutral: 0.00
+Positive: 0.66
+
+Enter a post text (type 'exit' to quit): construction
+Enter the number of upvotes (normalized): 100
+1/1 [==============================] - 0s 21ms/step
+
+Sentiment Probabilities:
+Negative: 0.56
+Neutral: 0.00
+Positive: 0.44
+
+Enter a post text (type 'exit' to quit): construction
+Enter the number of upvotes (normalized): 12345
+1/1 [==============================] - 0s 32ms/step
+
+Sentiment Probabilities:
+Negative: 1.00
+Neutral: 0.00
+Positive: 0.00
+
+Enter a post text (type 'exit' to quit): build
+Enter the number of upvotes (normalized): 123
+1/1 [==============================] - 0s 28ms/step
+
+Sentiment Probabilities:
+Negative: 0.61
+Neutral: 0.00
+Positive: 0.39
+
+Enter a post text (type 'exit' to quit): build 
+Enter the number of upvotes (normalized): 1
+1/1 [==============================] - 0s 38ms/step
+
+Sentiment Probabilities:
+Negative: 0.24
+Neutral: 0.05
+Positive: 0.71
+
+Enter a post text (type 'exit' to quit): infrastructure
+Enter the number of upvotes (normalized): 12
+1/1 [==============================] - 0s 18ms/step
+
+Sentiment Probabilities:
+Negative: 0.34
+Neutral: 0.00
+Positive: 0.66
+
+Enter a post text (type 'exit' to quit): exit
+Exiting...

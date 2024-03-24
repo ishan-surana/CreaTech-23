@@ -1,0 +1,5 @@
+1) It is observerd that keywords like 'build', 'construction' and 'infrastructure' with moderate number of upvotes lead to positive sentiment. Because, as the posts of the dataset suggest, L&T is considered to be one of the best companies in India for the work.
+2) The keyword 'stock' leads to positive sentiment as well. The posts of the dataset lead to the conclusion that L&T stocks are overall great to invest in for long-term, and most post view them in a positive light.
+3) High upvotes lead to negative sentiment. This is because the most upvoted posts of the dataset relate to the major controversy posts on Reddit.
+
+This is a somewhat biased model due to the dataset being comprised on scraping data only from Reddit. In further updates, this may be diluted and rectified successfully.
