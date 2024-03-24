@@ -13,6 +13,7 @@ from nltk.stem import WordNetLemmatizer
 from nltk import pos_tag
 import emoji
 import streamlit as st
+import matplotlib.pyplot as plt
 
 nltk.download('punkt')
 nltk.download('wordnet')
@@ -117,8 +118,8 @@ dense_upvotes = Dense(32, activation='relu')(input_upvotes)
 concatenated_inputs = Concatenate()([pooling_layer_content, dense_upvotes])
 
 # Additional fully connected layers
-dense = Dense(128, activation='relu')(concatenated_inputs)
-output = Dense(3, activation='softmax')(dense)  # Output
+dense1 = Dense(128, activation='relu')(concatenated_inputs)
+output = Dense(3, activation='softmax')(dense1)  # Output
 
 # Define the model
 model = Model(inputs=[input_content, input_upvotes], outputs=output)
@@ -153,6 +154,32 @@ if st.button("Predict Sentiment"):
         positive_prob = predictions[0][2]
 
         st.write("Sentiment Probabilities:")
-        st.write(f"Negative: {negative_prob:.2f}")
-        st.write(f"Neutral: {neutral_prob:.2f}")
-        st.write(f"Positive: {positive_prob:.2f}")
+        # Plot pie chart
+        labels = ['Negative', 'Neutral', 'Positive']
+        sizes = [negative_prob, neutral_prob, positive_prob]
+        colors = ['red', 'blue', 'green']
+
+        # Create a pie chart
+        fig, ax = plt.subplots()
+        wedges, labels, percentages = ax.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=140)
+
+        # Equal aspect ratio ensures that pie is drawn as a circle
+        ax.axis('equal')
+
+        # Add glowing effect
+        for wedge in wedges:
+            wedge.set_edgecolor('#000000')  # Black edge color
+            wedge.set_linewidth(0.1)        # Edge width
+
+        # Set transparent background
+        fig.patch.set_alpha(0)
+
+        # Set label text color to white
+        for label in labels:
+            label.set_color('white')
+
+        # Set percentage text to bold
+        for pct in percentages:
+            pct.set_fontweight('bold')
+
+        st.pyplot(fig)
