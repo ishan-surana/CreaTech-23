@@ -15,7 +15,9 @@ from collections import Counter
 import cloudpickle
 
 nltk.download('punkt')
+nltk.download('wordnet')
 nltk.download('stopwords')
+nltk.download('averaged_perceptron_tagger')
 
 rd = pd.read_csv('reddit_posts_data.csv')
 rd['post_text'] = rd['post_title'] + ' ' + rd['post_text']

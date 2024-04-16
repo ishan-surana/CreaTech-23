@@ -4,9 +4,14 @@ import numpy as np
 from tensorflow.keras.models import load_model
 import cloudpickle
 import matplotlib.pyplot as plt
+import nltk
 
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('stopwords')
+nltk.download('averaged_perceptron_tagger')
 # Load model architecture
-model = load_model('trained_model.keras')
+model = load_model('./trained_model.keras')
 
 # Load custom prediction function
 with open("predict_sentiment.pkl", "rb") as f:
