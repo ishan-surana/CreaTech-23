@@ -6,3 +6,4 @@ nltk==3.6.5
 emoji==1.6.1
 streamlit==1.0.0
 matplotlib
+cloudpickle
