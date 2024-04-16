@@ -115,7 +115,7 @@ loss, accuracy = model.evaluate(X_test, y_test)
 print(f'Test Loss: {loss}, Test Accuracy: {accuracy}')
 
 model.predict = predict_sentiment
-model.save("./final_model")
+model.save("final_model.h5")
 
 with open("predict_sentiment.pkl", "wb") as f:
     cloudpickle.dump(predict_sentiment, f)
