@@ -11,7 +11,7 @@ nltk.download('wordnet')
 nltk.download('stopwords')
 nltk.download('averaged_perceptron_tagger')
 # Load model architecture
-model = load_model('final_model')
+model = load_model('models/final_model')
 
 # Load custom prediction function
 with open("predict_sentiment.pkl", "rb") as f:
