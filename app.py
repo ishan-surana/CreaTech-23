@@ -1,12 +1,8 @@
 from flask import Flask, jsonify, request, render_template
 from tensorflow.keras.models import load_model
-import cloudpickle
+from model_new_trained import predict_sentiment
 
 model = load_model('final_model.h5',compile=False)
-
-# Load custom prediction function
-with open("predict_sentiment.pkl", "rb") as f:
-    predict_sentiment = cloudpickle.load(f)
 
 app = Flask(__name__)
 

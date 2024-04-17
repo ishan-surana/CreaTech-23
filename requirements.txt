@@ -8,3 +8,4 @@ streamlit==1.0.0
 matplotlib
 cloudpickle
 flask
+Werkzeug==2.2.2
