@@ -51,7 +51,7 @@ neutral_words = Counter()
 for index, row in data.iterrows():
     sentiment = row['opinion']
     text = row['post_text']
-    cleaned_text = clean_text(text)
+    cleaned_text = clean_text(text.lower())
     tokens = word_tokenize(cleaned_text)
     filtered_tokens = [word for word in tokens if word not in stop_words and word.lower() not in {'larsen','toubro','lt'}]
     if sentiment == 'positive' or sentiment == 2:
@@ -96,10 +96,12 @@ def predict_sentiment(text):
                         # Reverse sentiment of the current word
                         if filtered_tokens[i + j] in positive_words:
                             filtered_tokens[i + j] = "not_" + filtered_tokens[i + j]
-                            negative_words.update([filtered_tokens[i+j]])
+                            if filtered_tokens[i + j] not in negative_words:
+                                negative_words.update([filtered_tokens[i+j]])
                         elif filtered_tokens[i + j] in negative_words:
                             filtered_tokens[i + j] = "not_" + filtered_tokens[i + j]
-                            positive_words.update([filtered_tokens[i+j]])
+                            if filtered_tokens[i + j] not in positive_words:
+                                positive_words.update([filtered_tokens[i+j]])
                         elif filtered_tokens[i + j] in neutral_words:
                             filtered_tokens[i + j] = "not_" + filtered_tokens[i + j]
                     else:
@@ -153,8 +155,10 @@ print(f'Test Loss: {loss}, Test Accuracy: {accuracy}')
 model.predict = predict_sentiment
 save_model(model, "final_model.h5")
 
+'''
 with open("predict_sentiment.pkl", "wb") as f:
     cloudpickle.dump(predict_sentiment, f)
+'''
 '''
 while True:
     user_input = input("Enter a post text (type 'exit' to quit): ")

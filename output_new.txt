@@ -1,0 +1,12 @@
+Epoch 1/5
+11/11 [==============================] - 1s 42ms/step - loss: 0.9029 - accuracy: 0.7236 - val_loss: 0.5981 - val_accuracy: 0.8519
+Epoch 2/5
+11/11 [==============================] - 0s 18ms/step - loss: 0.6114 - accuracy: 0.7826 - val_loss: 0.4841 - val_accuracy: 0.8519
+Epoch 3/5
+11/11 [==============================] - 0s 17ms/step - loss: 0.5360 - accuracy: 0.7826 - val_loss: 0.4939 - val_accuracy: 0.8519
+Epoch 4/5
+11/11 [==============================] - 0s 19ms/step - loss: 0.4893 - accuracy: 0.7826 - val_loss: 0.4710 - val_accuracy: 0.8519
+Epoch 5/5
+11/11 [==============================] - 0s 17ms/step - loss: 0.4309 - accuracy: 0.7857 - val_loss: 0.4549 - val_accuracy: 0.8519
+3/3 [==============================] - 0s 4ms/step - loss: 0.4549 - accuracy: 0.8519
+Test Loss: 0.45494645833969116, Test Accuracy: 0.8518518805503845
