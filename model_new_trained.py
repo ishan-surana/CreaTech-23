@@ -53,7 +53,7 @@ for index, row in data.iterrows():
     text = row['post_text']
     cleaned_text = clean_text(text)
     tokens = word_tokenize(cleaned_text)
-    filtered_tokens = [word for word in tokens if word not in stop_words]
+    filtered_tokens = [word for word in tokens if word not in stop_words and word.lower() not in {'larsen','toubro','lt'}]
     if sentiment == 'positive' or sentiment == 2:
         positive_words.update(filtered_tokens)
     elif sentiment == 'negative' or sentiment == 0:
@@ -61,14 +61,50 @@ for index, row in data.iterrows():
     elif sentiment == 'neutral' or sentiment == 1:
         neutral_words.update(filtered_tokens)
 
+neutral_words.update(['Larsen','Toubro','L&T','larsen','toubro','l&t'])
+
+# Save positive_words
+with open("positive_words.txt", "w", encoding="utf-8") as f:
+    f.write("\n".join(positive_words.keys()))
+
+# Save negative_words
+with open("negative_words.txt", "w", encoding="utf-8") as f:
+    f.write("\n".join(negative_words.keys()))
+
+# Save neutral_words
+with open("neutral_words.txt", "w", encoding="utf-8") as f:
+    f.write("\n".join(neutral_words.keys()))
+
 def predict_sentiment(text):
     cleaned_input = clean_text(text)
     tokens = word_tokenize(cleaned_input)
-    filtered_tokens = [word for word in tokens if word not in stop_words]
+    filtered_tokens = [word for word in tokens]
     final_text = ' '.join(filtered_tokens)
     tokenized_text = tokenizer.texts_to_sequences([cleaned_input])
     padded_text = pad_sequences(tokenized_text, maxlen=100)
-
+    
+    negation_window = 3
+    negations = set(["no", "not", "never", "none", "nobody", "nothing", "nowhere", "neither", "nor", "bad", "worse","worst"])
+    negate = False
+    for i, word in enumerate(filtered_tokens):
+        if word.lower() in negations:
+            negate = not negate
+            # Extend the negation window
+            for j in range(1, min(negation_window + 1, len(filtered_tokens) - i)):
+                if filtered_tokens[i + j] not in negations:
+                    if negate:
+                        # Reverse sentiment of the current word
+                        if filtered_tokens[i + j] in positive_words:
+                            filtered_tokens[i + j] = "not_" + filtered_tokens[i + j]
+                            negative_words.update([filtered_tokens[i+j]])
+                        elif filtered_tokens[i + j] in negative_words:
+                            filtered_tokens[i + j] = "not_" + filtered_tokens[i + j]
+                            positive_words.update([filtered_tokens[i+j]])
+                        elif filtered_tokens[i + j] in neutral_words:
+                            filtered_tokens[i + j] = "not_" + filtered_tokens[i + j]
+                    else:
+                        break
+    
     total_positive_score = sum(positive_words.get(word, 0) for word in filtered_tokens)
     total_negative_score = sum(negative_words.get(word, 0) for word in filtered_tokens)
     total_neutral_score = sum(neutral_words.get(word, 0) for word in filtered_tokens)
@@ -115,7 +151,7 @@ loss, accuracy = model.evaluate(X_test, y_test)
 print(f'Test Loss: {loss}, Test Accuracy: {accuracy}')
 
 model.predict = predict_sentiment
-model.save("final_model.h5")
+save_model(model, "final_model.h5")
 
 with open("predict_sentiment.pkl", "wb") as f:
     cloudpickle.dump(predict_sentiment, f)
@@ -132,8 +168,8 @@ while True:
 
     print(predictions)
     print(predicted_sentiment)
-
 '''
+
 '''
     # Print results
     print("\nSentiment Probabilities:")
