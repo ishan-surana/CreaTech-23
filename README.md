@@ -6,6 +6,9 @@ An AI model created for the CreaTech 2024 hackathon, on the problem statement:-<
 
 Hosted [here](https://i-and-t-solutions-createch-24.streamlit.app/) via Streamlit.
 
+> [!NOTE]
+> Above link is *old* model (initial submission). Revamped model hosted **[here](https://createch-24-i-and-t-solutions.streamlit.app/)**.
+
 ## Description
 The [dataset](reddit_posts_data.csv) used in the model has been formed by scraping data from Reddit. The codes have been made completely by me and use DOM to access the textarea of the posts and links. The [scaper](scraper.py) executes the scripts provided to access relavent post data and stores them in the dataset. The posts were extracted on the search phrases "larsen and toubro" and "l&t".
 
