@@ -9,7 +9,7 @@ Hosted [here](https://i-and-t-solutions-createch-24.streamlit.app/) via Streamli
 > [!NOTE]
 > Above link is *old* model (initial submission). Revamped model hosted **[here](https://createch-24-i-and-t-solutions.streamlit.app/)**.
 
-This work is licensed under [**CC BY-NC-ND 4.0**](LICENSE.md). Please refer the licence for more details regarding freedom of use.
+This work is licensed under [**CC BY-NC-ND 4.0**](../../tree/main?tab=License-1-ov-file). Please refer the licence for more details regarding freedom of use.
 
 ## Description
 The [dataset](reddit_posts_data.csv) used in the model has been formed by scraping data from Reddit. The codes have been made completely by me and use DOM to access the textarea of the posts and links. The [scaper](scraper.py) executes the scripts provided to access relavent post data and stores them in the dataset. The posts were extracted on the search phrases "larsen and toubro" and "l&t".
